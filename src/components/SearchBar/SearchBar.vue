@@ -1,9 +1,9 @@
 <template>
-    <nav class="navbar is-transparent">
+    <nav class="navbar is-transparent p-2">
         <div class="navbar-brand">
-            <a class="navbar-item" href="https://bulma.io">
-                <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox"
-                    width="112" height="28">
+            <a class="navbar-item" href="/">
+                <i class="fa-solid fa-bowl-food fa-2xl"></i>
+                <b class="is-size-4 ml-2">Chef</b>
             </a>
             <div class="navbar-burger" data-target="navbarExampleTransparentExample">
                 <span></span>
@@ -14,7 +14,7 @@
 
         <div id="navbarExampleTransparentExample" class="navbar-menu">
             <div class="navbar-start">
-                <a class="navbar-item" href="https://bulma.io/">
+                <a class="navbar-item" href="/">
                     Home
                 </a>
             </div>
@@ -42,24 +42,15 @@
                 <div class="navbar-item">
                     <div class="field is-grouped">
                         <p class="control">
-                            <a class="bd-tw-button button" data-social-network="Twitter" data-social-action="tweet"
-                                data-social-target="https://bulma.io" target="_blank"
-                                href="https://twitter.com/intent/tweet?text=Bulma: a modern CSS framework based on Flexbox&amp;hashtags=bulmaio&amp;url=https://bulma.io&amp;via=jgthms">
+                            <a class="bd-tw-button button" data-social-network="Github"
+                                data-social-target="https://github.com/LuizFelipeM/" target="_blank"
+                                href="https://github.com/LuizFelipeM/">
                                 <span class="icon">
-                                    <i class="fab fa-twitter"></i>
+                                    <i class="fa-brands fa-github"></i>
                                 </span>
                                 <span>
-                                    Tweet
+                                    Github
                                 </span>
-                            </a>
-                        </p>
-                        <p class="control">
-                            <a class="button is-primary"
-                                href="https://github.com/jgthms/bulma/releases/download/0.9.4/bulma-0.9.4.zip">
-                                <span class="icon">
-                                    <i class="fas fa-download"></i>
-                                </span>
-                                <span>Download</span>
                             </a>
                         </p>
                     </div>
