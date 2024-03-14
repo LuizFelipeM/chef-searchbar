@@ -21,13 +21,13 @@
 
             <div class="navbar-item has-dropdown is-hoverable field has-addons is-flex-grow-1 my-auto mx-5">
                 <div class="control is-flex-grow-1 has-icons-left">
-                    <input class="input" type="text" placeholder="Search" v-model="term" />
+                    <input class="input" type="text" placeholder="Search" v-model="term" @keypress.enter="search" />
                     <span class="icon is-left">
                         <i class="fas fa-search" aria-hidden="true"></i>
                     </span>
                 </div>
                 <div class="control">
-                    <button class="button is-info" v-on:click="onSearchClick">Search</button>
+                    <button class="button is-info" v-on:click="search">Search</button>
                 </div>
 
                 <div class="navbar-dropdown is-boxed mt-1" v-if="term && suggestions.length">
@@ -94,7 +94,7 @@ export default {
         onSuggestionClick(id) {
             singleSpa.navigateToUrl(routes.RECIPE.replace(":id", id))
         },
-        onSearchClick() {
+        search() {
             singleSpa.navigateToUrl(routes.SEARCH.replace(":term", this.term))
         }
     }
