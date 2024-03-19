@@ -1,65 +1,3 @@
-<template>
-    <nav class="navbar is-transparent p-2">
-        <div class="navbar-brand">
-            <a class="navbar-item" href="/">
-                <i class="fa-solid fa-bowl-food fa-2xl"></i>
-                <b class="is-size-4 ml-2">Chef</b>
-            </a>
-            <div class="navbar-burger" data-target="navbarExampleTransparentExample">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-
-        <div id="navbarExampleTransparentExample" class="navbar-menu">
-            <div class="navbar-start">
-                <a class="navbar-item" href="/">
-                    Home
-                </a>
-            </div>
-
-            <div class="navbar-item has-dropdown is-hoverable field has-addons is-flex-grow-1 my-auto mx-5">
-                <div class="control is-flex-grow-1 has-icons-left">
-                    <input class="input" type="text" placeholder="Search" v-model="term" @keypress.enter="search" />
-                    <span class="icon is-left">
-                        <i class="fas fa-search" aria-hidden="true"></i>
-                    </span>
-                </div>
-                <div class="control">
-                    <button class="button is-info" v-on:click="search">Search</button>
-                </div>
-
-                <div class="navbar-dropdown is-boxed mt-1" v-if="term && suggestions.length">
-                    <a class="navbar-item suggestion" v-for="{ id, title } in suggestions" :key="id"
-                        v-on:click="onSuggestionClick(id)">
-                        {{ title }}
-                    </a>
-                </div>
-            </div>
-
-            <div class="navbar-end">
-                <div class="navbar-item">
-                    <div class="field is-grouped">
-                        <p class="control">
-                            <a class="bd-tw-button button" data-social-network="Github"
-                                data-social-target="https://github.com/LuizFelipeM/" target="_blank"
-                                href="https://github.com/LuizFelipeM/">
-                                <span class="icon">
-                                    <i class="fa-brands fa-github"></i>
-                                </span>
-                                <span>
-                                    Github
-                                </span>
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
-</template>
-
 <script>
 import _ from "lodash"
 import * as singleSpa from "single-spa"
@@ -68,6 +6,8 @@ import { routes, api } from "@Chef/utility"
 export default {
     data() {
         return {
+            pathname: window.location.pathname,
+            routes,
             term: "",
             suggestions: []
         }
@@ -100,3 +40,223 @@ export default {
     }
 }
 </script>
+
+<style>
+.is-food:before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.65;
+    background-image: url("https://institucional.atlaseletro.com.br/wp-content/uploads/2023/01/comidacolorida-1060x537.jpg");
+    background-repeat: no-repeat;
+    background-position: -50% 0;
+    background-size: cover;
+}
+
+.is-borderless {
+    border: 0 !important;
+}
+
+/* .polaroid-group {
+    top: 10%;
+    left: 15%;
+    position: absolute;
+} */
+
+.polaroid {
+    top: 18%;
+    left: 15%;
+    position: absolute;
+
+    background-color: #fff;
+    padding: 13px;
+    width: 200px;
+    max-width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+
+.polaroid.first.left {
+    transform: rotate(8deg);
+    top: 9%;
+    left: 22%;
+}
+
+.polaroid.second.left {
+    left: 18.4%;
+    top: 12%;
+}
+
+.polaroid.third.left {
+    transform: rotate(-8deg);
+}
+
+.polaroid.first.right {
+    left: 70%;
+    transform: rotate(8deg);
+}
+
+.polaroid.second.right {
+    transform: rotate(-20deg);
+    top: 9%;
+    left: 75%;
+}
+
+.photo-container {
+    width: 100%;
+    height: 200px;
+    /* Adjust as needed */
+    overflow: hidden;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.photo {
+    width: auto;
+    height: 100%;
+    object-fit: cover;
+}
+
+.caption {
+    text-align: center;
+    font-size: 0.8rem;
+    margin-top: 5px;
+    font-family: Arial, sans-serif;
+    color: #555;
+}
+</style>
+
+<template>
+    <section class="hero is-medium is-info is-small">
+        <div class="hero-head">
+            <nav class="navbar">
+                <div class="container">
+                    <div class="navbar-brand">
+                        <a class="navbar-item">
+                            <a class="navbar-item" href="/">
+                                <i class="fa-solid fa-bowl-food fa-2xl"></i>
+                                <b class="is-size-4 ml-2">Chef</b>
+                            </a>
+                        </a>
+                        <span class="navbar-burger" data-target="navbarMenuHeroB">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+                    </div>
+
+                    <div id="navbarMenuHeroB" class="navbar-menu">
+                        <div class="navbar-end">
+                            <a v-bind:class="(pathname === routes.HOME) ? 'is-active' : null" class="navbar-item"
+                                href="/">
+                                Home
+                            </a>
+
+                            <div
+                                class="navbar-item has-dropdown is-hoverable field has-addons is-flex-grow-1 my-auto mx-5">
+                                <div class="control is-flex-grow-1 is-borderless">
+                                    <input class="input" type="text" placeholder="Search" v-model="term"
+                                        @keypress.enter="search" />
+                                </div>
+                                <div class="control">
+                                    <button class="button is-white has-text-info is-borderless" v-on:click="search">
+                                        <span class="icon">
+                                            <i class="fas fa-search" aria-hidden="true"></i>
+                                        </span>
+                                    </button>
+                                </div>
+
+                                <div class="navbar-dropdown is-boxed mt-1 has-text-grey-dark"
+                                    v-if="term && suggestions.length">
+                                    <a class="navbar-item suggestion" v-for="{ id, title } in  suggestions " :key="id"
+                                        v-on:click="onSuggestionClick(id)">
+                                        {{ title }}
+                                    </a>
+                                </div>
+                            </div>
+
+                            <span class="navbar-item">
+                                <a class="button is-info is-inverted"
+                                    data-social-target="https://github.com/LuizFelipeM/" target="_blank"
+                                    href="https://github.com/LuizFelipeM/">
+                                    <span class="icon">
+                                        <i class="fab fa-github"></i>
+                                    </span>
+                                    <span>Github</span>
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <div class="hero-body is-relative" v-if="pathname === routes.HOME">
+            <div class="polaroid-group is-hidden-mobile">
+                <div class="polaroid first left">
+                    <div class="photo-container">
+                        <img src="https://spoonacular.com/recipeImages/640730-556x370.jpg" alt="Sample Photo"
+                            class="photo">
+                    </div>
+                    <p class="caption">Sample Caption</p>
+                </div>
+                <div class="polaroid second left">
+                    <div class="photo-container">
+                        <img src="https://spoonacular.com/recipeImages/633841-556x370.jpg" alt="Sample Photo"
+                            class="photo">
+                    </div>
+                    <p class="caption">Sample Caption</p>
+                </div>
+                <div class="polaroid third left">
+                    <div class="photo-container">
+                        <img src="https://spoonacular.com/recipeImages/716417-556x370.jpg" alt="Sample Photo"
+                            class="photo">
+                    </div>
+                    <p class="caption">Strawberry Shortcake w. Mini Strawberry PopTarts</p>
+                </div>
+            </div>
+
+            <div class="container has-text-centered">
+                <p class="title has-text-white">
+                    Chef's Corner
+                </p>
+                <p class="subtitle has-text-white">
+                    A Culinary Hub for Inspired Recipes and Gastronomic Adventures
+                </p>
+            </div>
+
+            <div class="polaroid-group is-hidden-mobile">
+                <div class="polaroid first right">
+                    <div class="photo-container">
+                        <img src="https://spoonacular.com/recipeImages/636602-556x370.jpg" alt="Sample Photo"
+                            class="photo">
+                    </div>
+                    <p class="caption">Butternut Squash Soup (In Half An Hour!)</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-foot" v-if="pathname === routes.HOME">
+            <nav class="tabs is-boxed is-fullwidth">
+                <div class="container">
+                    <ul>
+                        <li class="is-active">
+                            <a>Overview</a>
+                        </li>
+                        <li>
+                            <a>Modifiers</a>
+                        </li>
+                        <li>
+                            <a>Grid</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </section>
+</template>
