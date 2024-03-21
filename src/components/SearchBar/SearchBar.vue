@@ -42,30 +42,9 @@ export default {
 </script>
 
 <style>
-.is-food:before {
-    content: ' ';
-    display: block;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.65;
-    background-image: url("https://institucional.atlaseletro.com.br/wp-content/uploads/2023/01/comidacolorida-1060x537.jpg");
-    background-repeat: no-repeat;
-    background-position: -50% 0;
-    background-size: cover;
-}
-
 .is-borderless {
     border: 0 !important;
 }
-
-/* .polaroid-group {
-    top: 10%;
-    left: 15%;
-    position: absolute;
-} */
 
 .polaroid {
     top: 18%;
@@ -132,7 +111,7 @@ export default {
 </style>
 
 <template>
-    <section class="hero is-medium is-info is-small">
+    <section class="hero is-medium is-info">
         <div class="hero-head">
             <nav class="navbar">
                 <div class="container">
@@ -158,10 +137,10 @@ export default {
                             </a>
 
                             <div
-                                class="navbar-item has-dropdown is-hoverable field has-addons is-flex-grow-1 my-auto mx-5">
+                                class="navbar-item has-dropdown is-hoverable field has-addons is-flex-grow-1 my-auto ml-3">
                                 <div class="control is-flex-grow-1 is-borderless">
-                                    <input class="input" type="text" placeholder="Search" v-model="term"
-                                        @keypress.enter="search" />
+                                    <input class="input" type="text" placeholder="Search recipe, ingredient or keyword"
+                                        v-model="term" @keypress.enter="search" />
                                 </div>
                                 <div class="control">
                                     <button class="button is-white has-text-info is-borderless" v-on:click="search">
@@ -198,24 +177,17 @@ export default {
 
         <div class="hero-body is-relative" v-if="pathname === routes.HOME">
             <div class="polaroid-group is-hidden-mobile">
-                <div class="polaroid first left">
-                    <div class="photo-container">
-                        <img src="https://spoonacular.com/recipeImages/640730-556x370.jpg" alt="Sample Photo"
-                            class="photo">
-                    </div>
-                    <p class="caption">Sample Caption</p>
-                </div>
                 <div class="polaroid second left">
                     <div class="photo-container">
-                        <img src="https://spoonacular.com/recipeImages/633841-556x370.jpg" alt="Sample Photo"
+                        <img src="https://spoonacular.com/recipeImages/632749-556x370.jpg" alt="Arroz Con Pollo"
                             class="photo">
                     </div>
-                    <p class="caption">Sample Caption</p>
+                    <p class="caption">Arroz Con Pollo</p>
                 </div>
                 <div class="polaroid third left">
                     <div class="photo-container">
-                        <img src="https://spoonacular.com/recipeImages/716417-556x370.jpg" alt="Sample Photo"
-                            class="photo">
+                        <img src="https://spoonacular.com/recipeImages/716417-556x370.jpg"
+                            alt="Strawberry Shortcake w. Mini Strawberry PopTarts<" class="photo">
                     </div>
                     <p class="caption">Strawberry Shortcake w. Mini Strawberry PopTarts</p>
                 </div>
@@ -227,36 +199,32 @@ export default {
                 </p>
                 <p class="subtitle has-text-white">
                     A Culinary Hub for Inspired Recipes and Gastronomic Adventures
+                    <br />
+                    <span class="is-size-7">
+                        Powered by
+                        <a href="https://spoonacular.com/food-api" target="_blank" class="is-underlined">
+                            Spoonacular API
+                        </a>
+                    </span>
                 </p>
             </div>
 
             <div class="polaroid-group is-hidden-mobile">
                 <div class="polaroid first right">
                     <div class="photo-container">
-                        <img src="https://spoonacular.com/recipeImages/636602-556x370.jpg" alt="Sample Photo"
-                            class="photo">
+                        <img src="https://spoonacular.com/recipeImages/636602-556x370.jpg"
+                            alt="Butternut Squash Soup (In Half An Hour!)" class="photo">
                     </div>
                     <p class="caption">Butternut Squash Soup (In Half An Hour!)</p>
                 </div>
-            </div>
-        </div>
-
-        <div class="hero-foot" v-if="pathname === routes.HOME">
-            <nav class="tabs is-boxed is-fullwidth">
-                <div class="container">
-                    <ul>
-                        <li class="is-active">
-                            <a>Overview</a>
-                        </li>
-                        <li>
-                            <a>Modifiers</a>
-                        </li>
-                        <li>
-                            <a>Grid</a>
-                        </li>
-                    </ul>
+                <div class="polaroid second right">
+                    <div class="photo-container">
+                        <img src="https://spoonacular.com/recipeImages/640730-556x370.jpg" alt="Creme Brulee"
+                            class="photo">
+                    </div>
+                    <p class="caption">Creme Brulee</p>
                 </div>
-            </nav>
+            </div>
         </div>
     </section>
 </template>
