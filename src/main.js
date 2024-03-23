@@ -11,16 +11,17 @@ const vueLifecycles = singleSpaVue({
         // single-spa props are available on the "this" object. Forward them to your component as needed.
         // https://single-spa.js.org/docs/building-applications#lifecycle-props
         // if you uncomment these, remember to add matching prop definitions for them in your App.vue file.
-        /*
-        name: this.name,
-        mountParcel: this.mountParcel,
-        singleSpa: this.singleSpa,
-        */
+        // name: this.name,
+        // mountParcel: this.mountParcel,
+        // singleSpa: this.singleSpa,
       });
     },
   },
 });
 
 export const bootstrap = vueLifecycles.bootstrap;
-export const mount = vueLifecycles.mount;
+export const mount = (props) => {
+  console.log('props', props.store)
+  return vueLifecycles.mount(props)
+};
 export const unmount = vueLifecycles.unmount;
