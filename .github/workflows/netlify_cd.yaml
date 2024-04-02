@@ -1,7 +1,8 @@
 name: 'Netlify CD'
 
 on:
-  workflow_dispatch
+  workflow_dispatch:
+    inputs: null
   release:
     types: ['published']
 
