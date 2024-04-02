@@ -8,6 +8,8 @@
     Chef Search Bar - Single-SPA Application
 </h1>
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/07e6eb05-e2ca-4a63-a0e1-b7ccb5a37a20/deploy-status)](https://app.netlify.com/sites/delightful-crisp-b27143/deploys)
+
 This project was created to learn a set of [techonologies](#technologies). They are implemented just for fun in a recipes search website called Chef.
 
 This repository is the Single-SPA Application responsible for providing nav bar and search bar functionalities showed on top of the page, it uses the utility functions and enable easy navigation to the [other Single-SPA Applications](#applications) pages.
